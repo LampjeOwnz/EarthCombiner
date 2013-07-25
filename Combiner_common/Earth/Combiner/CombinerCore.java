@@ -5,6 +5,8 @@ import Earth.Combiner.Blocks.StoneGlass;
 import Earth.Combiner.Blocks.StoneWood;
 import Earth.Combiner.ItemTools.CombTool;
 import Earth.Combiner.ItemTools.CombinerItem;
+import Earth.Combiner.core.proxy.CommonProxy;
+import Earth.Combiner.lib.References;
 import Earth.Combiner.MachineUtilety.GuiHandler;
 import Earth.Combiner.MachineUtilety.TileEntityCombMachine;
 import Earth.Combiner.MachineUtilety.CombMachinepacketHandler;
@@ -29,13 +31,29 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="Earth", name="Combiner", version="0.0.2")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels = "CombinerCore", packetHandler = CombMachinepacketHandler.class)
+@Mod(	
+		modid 		= References.MODID, 
+		name 		= References.MODNAME, 
+		version 	= References.VERSION
+)
+@NetworkMod(
+	clientSideRequired	= true, 
+	serverSideRequired	= false, 
+	channels 			= "CombinerCore", 
+	packetHandler 		= CombMachinepacketHandler.class
+)
 public class CombinerCore {
 	
+		// Says where the client and server 'proxy' code is loaded.
+    	@SidedProxy(
+    			clientSide = References.CLIENT_PROXY_LOCATION, 
+    			serverSide = References.COMMON_PROXY_LOCATION
+    	)
+    	
+    	public static CommonProxy proxy;
+    	
+    	
         // The instance of your mod that Forge uses.
-        //@Instance("Earth")
-        //public static CombinerCore instance;
         @Instance
     	public static CombinerCore instance = new  CombinerCore();
     	private GuiHandler guihandler = new GuiHandler();
@@ -79,11 +97,6 @@ public class CombinerCore {
    	 	public final static Block StoneGlass = new StoneGlass(2358).setHardness(3.5F).setUnlocalizedName("StoneGlass");
    	 	public final static Block StonePlank = new StoneWood(2359).setHardness(3.5F).setUnlocalizedName("StonePlank");
         
-        
-        
-        // Says where the client and server 'proxy' code is loaded.
-        @SidedProxy(clientSide="Earth.Combiner.ClientProxy", serverSide="Earth.Combiner.CommonProxy")
-        public static CommonProxy proxy;
         
         
         // Pre Init
@@ -164,10 +177,4 @@ public class CombinerCore {
         }
 }
 
-
-
-
-public class lol {
-
-}
 

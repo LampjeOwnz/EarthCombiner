@@ -1,4 +1,4 @@
-package Earth.Combiner;
+package Earth.Combiner.core.proxy;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 import Earth.Combiner.CommonProxy;

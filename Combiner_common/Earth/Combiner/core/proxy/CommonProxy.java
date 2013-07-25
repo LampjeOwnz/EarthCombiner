@@ -1,4 +1,4 @@
-package Earth.Combiner;
+package Earth.Combiner.core.proxy;
 
 public class CommonProxy {
 
