@@ -1,7 +1,7 @@
 package Earth.Combiner.core.proxy;
 
 import net.minecraftforge.client.MinecraftForgeClient;
-import Earth.Combiner.CommonProxy;
+import Earth.Combiner.core.proxy.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
         
