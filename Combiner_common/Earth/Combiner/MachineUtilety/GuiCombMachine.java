@@ -9,7 +9,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL11;// Cant import somhow ...
 
 @SideOnly(Side.CLIENT)
 public class GuiCombMachine extends GuiContainer

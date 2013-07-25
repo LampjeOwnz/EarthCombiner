@@ -1,4 +1,4 @@
-package Earth.Combiner.ItemTools;
+package Earth.Combiner.ItemTools; //The type com.google.common.collect.Multimap cannot be resolved. It is indirectly referenced from required .class files
  
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
