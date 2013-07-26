@@ -313,6 +313,14 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
                  this.combmachineItemStacks[0] = null;
                  this.combmachineItemStacks[2] = null;
              }
+             if (this.combmachineItemStacks[0].stackSize <= 0)
+             {
+            	 this.combmachineItemStacks[0] = null;
+             }
+             if (this.combmachineItemStacks[2].stackSize <= 0)
+             {
+            	 this.combmachineItemStacks[2] = null;
+             }
              
          }
     }
@@ -348,8 +356,10 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
                 }
             }
 
-            if (i == InitItemTools.CombinerStone.itemID) return 2000;
-            if (i == Item.coal.itemID) return 1600;
+            if (i == InitItemTools.WoodScrap.itemID) return 800;
+            if (i == InitItemTools.CompWoodScrap.itemID) return 1600;
+            if (i == InitItemTools.CompCoalScrap.itemID) return 2400;
+           // if (i == Item.coal.itemID) return 1600;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }

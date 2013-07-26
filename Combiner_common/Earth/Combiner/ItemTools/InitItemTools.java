@@ -15,6 +15,8 @@ public class InitItemTools {
     public final static Item CombinerEmerald = new CombinerItem(17074).setUnlocalizedName("CombinerEmerald");
     public final static Item WoodScrap = new CombinerItem(17075).setUnlocalizedName("WoodScrap");
     public final static Item CobbleScrap = new CombinerItem(17076).setUnlocalizedName("CobbleScrap");
+    public final static Item CompWoodScrap = new CombinerItem(17077).setUnlocalizedName("CompressedWoodScrap");
+    public final static Item CompCoalScrap = new CombinerItem(17078).setUnlocalizedName("CompressedCoalScrap");
     
     // Tools
     public final static Item ToolStone = new CombTool(17180, NewMaterials.NewSTONE).setUnlocalizedName("ToolStone");
@@ -32,6 +34,8 @@ public class InitItemTools {
     	LanguageRegistry.addName(CombinerEmerald, Strings.COMBEMERALD_NAME);
     	LanguageRegistry.addName(WoodScrap, Strings.WOODSCRAP_NAME);
    	 	LanguageRegistry.addName(CobbleScrap, Strings.COBBLESCRAP_NAME);
+   	 	LanguageRegistry.addName(CompWoodScrap, Strings.COMPWOODSCRAP_NAME);
+   	 	LanguageRegistry.addName(CompCoalScrap, Strings.COMPCOALSCRAP_NAME);
    	 	
    	 	// Tool name register
     	LanguageRegistry.addName(ToolStone, Strings.COBBLETOOL_NAME);

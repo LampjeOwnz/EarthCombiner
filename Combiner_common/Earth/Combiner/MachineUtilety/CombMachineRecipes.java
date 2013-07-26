@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 //import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Blocks.InitBlocks;
+import Earth.Combiner.ItemTools.InitItemTools;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,8 +31,9 @@ public class CombMachineRecipes
     /** De recipes natuurlijk. */
     private CombMachineRecipes()
     {
-    	this.addCombining(new ItemStack(Block.planks), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StonePlank,1), 0.7F);
-    	this.addCombining(new ItemStack(Block.glass), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StoneGlass,1), 0.7F);    	
+    	this.addCombining(new ItemStack(Block.planks), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompWoodScrap,1), 0.7F);
+    	this.addCombining(new ItemStack(Item.coal), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompCoalScrap,1), 0.7F);
+    	this.addCombining(new ItemStack(Block.glass), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StoneGlass,1), 0.7F);
     }
 
     /** Deze voegt de recipes en de exp in de bij behorende lijsten. */

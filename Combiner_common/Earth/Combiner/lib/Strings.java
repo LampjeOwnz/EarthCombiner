@@ -10,6 +10,8 @@ public class Strings {
 	public static final String COMBEMERALD_NAME = "Combiner Diamond";
 	public static final String WOODSCRAP_NAME = "Wood Scrap";
 	public static final String COBBLESCRAP_NAME = "Cobble Scrap";
+	public static final String COMPWOODSCRAP_NAME = "Compressed Wood Scrap";
+	public static final String COMPCOALSCRAP_NAME = "Compressed Coal Scrap";
 	
 	
 	// Item Strings

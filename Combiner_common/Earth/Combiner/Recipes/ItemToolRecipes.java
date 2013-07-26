@@ -20,8 +20,12 @@ public class ItemToolRecipes {
             " x ", "x x", "sbs", 'x', Item.ingotGold, 's', Item.stick, 'b', InitItemTools.RoundStone});
    	 	GameRegistry.addRecipe(new ItemStack(InitItemTools.CombinerEmerald,1), new Object[] {
             " x ", "x x", "sbs", 'x', Item.diamond, 's', Item.stick, 'b', InitItemTools.RoundStone});
+   	 	
    	 	GameRegistry.addRecipe(new ItemStack(Block.torchWood,8), new Object[] {
-   	 		"xs", " b", 'x', Block.planks, 's', Block.wood, 'b', InitItemTools.CombinerStone});
+   	 		"xs ", " b ", 'x', Block.planks, 's', Block.wood, 'b', InitItemTools.CombinerStone});
+   	 	GameRegistry.addRecipe(new ItemStack(InitItemTools.WoodScrap,4), new Object[] {
+	 		"s  ", "b  ", 's', Block.wood, 'b', InitItemTools.CombinerStone});
+   	 	
    	 	
    	 	// Tool recipe register
    	 	GameRegistry.addRecipe(new ItemStack(InitItemTools.ToolStone,1), new Object[] {

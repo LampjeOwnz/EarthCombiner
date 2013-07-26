@@ -74,10 +74,15 @@ public class CombinerCore {
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
         	InitTabs.init();
+        	
         	NewMaterials.init();
+        	
         	InitItemTools.init();
+        	
         	ItemToolRecipes.init();
+        	
         	InitBlocks.init();
+        	
         	BlockRecipes.init();
         	
        	 	// Blocks mechanics register
