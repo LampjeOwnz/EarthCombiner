@@ -6,6 +6,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import Earth.Combiner.CombinerCore;
+import Earth.Combiner.lib.CombinerTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,7 +17,7 @@ public class StoneGlass extends Block
     public StoneGlass(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(CombinerCore.CombinerTab);
+        this.setCreativeTab(CombinerTabs.CombinerTab);
     }
     
     @Override

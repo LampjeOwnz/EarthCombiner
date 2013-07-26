@@ -2,6 +2,7 @@ package Earth.Combiner.MachineUtilety;
 
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Blocks.CombMachine;
+import Earth.Combiner.ItemTools.InitItemTools;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -347,7 +348,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
                 }
             }
 
-            if (i == CombinerCore.CombinerStone.itemID) return 2000;
+            if (i == InitItemTools.CombinerStone.itemID) return 2000;
             if (i == Item.coal.itemID) return 1600;
             return GameRegistry.getFuelValue(par0ItemStack);
         }

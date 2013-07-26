@@ -43,7 +43,7 @@ public class CombMachine extends BlockContainer
 
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return CombinerCore.CombineHeaterOff.blockID;
+        return InitBlocks.CombineHeaterOff.blockID;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
@@ -126,11 +126,11 @@ public class CombMachine extends BlockContainer
 
         if (par0)
         {
-            par1World.setBlock(par2, par3, par4, CombinerCore.CombineHeaterOn.blockID);
+            par1World.setBlock(par2, par3, par4, InitBlocks.CombineHeaterOn.blockID);
         }
         else
         {
-            par1World.setBlock(par2, par3, par4, CombinerCore.CombineHeaterOff.blockID);
+            par1World.setBlock(par2, par3, par4, InitBlocks.CombineHeaterOff.blockID);
         }
 
         keepCombMachineInventory = false;
@@ -277,7 +277,7 @@ public class CombMachine extends BlockContainer
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return CombinerCore.CombineHeaterOff.blockID;
+        return InitBlocks.CombineHeaterOff.blockID;
     }
 }
 

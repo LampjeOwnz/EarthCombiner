@@ -3,6 +3,7 @@ package Earth.Combiner.ItemTools; //The type com.google.common.collect.Multimap 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import Earth.Combiner.CombinerCore;
+import Earth.Combiner.lib.CombinerTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -28,7 +29,7 @@ public class CombTool extends ItemTool
     {
         super(par1, 3, par2EnumToolMaterial, blocksEffectiveAgainst);
         maxStackSize=1;
-        this.setCreativeTab(CombinerCore.CombinerTab);
+        this.setCreativeTab(CombinerTabs.CombinerTab);
     }
 
     /**

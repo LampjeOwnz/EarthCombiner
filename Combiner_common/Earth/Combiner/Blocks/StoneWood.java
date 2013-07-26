@@ -2,6 +2,7 @@ package Earth.Combiner.Blocks;
 
 
 import Earth.Combiner.CombinerCore;
+import Earth.Combiner.lib.CombinerTabs;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -14,7 +15,7 @@ public class StoneWood extends Block
     public StoneWood(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(CombinerCore.CombinerTab);
+        this.setCreativeTab(CombinerTabs.CombinerTab);
     }
     @Override
    	@SideOnly(Side.CLIENT)
