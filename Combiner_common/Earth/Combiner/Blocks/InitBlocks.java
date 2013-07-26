@@ -3,7 +3,7 @@ package Earth.Combiner.Blocks;
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.MachineUtilety.GuiHandler;
 import Earth.Combiner.MachineUtilety.TileEntityCombMachine;
-import Earth.Combiner.lib.CombinerTabs;
+import Earth.Combiner.Tabs.InitTabs;
 import Earth.Combiner.lib.Strings;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class InitBlocks {
 
 	// Blocks
-	public final static Block CombineHeaterOff = (new CombMachine(2356, false)).setHardness(3.5F).setUnlocalizedName("combiner_front").setCreativeTab(CombinerTabs.CombinerTab);
+	public final static Block CombineHeaterOff = (new CombMachine(2356, false)).setHardness(3.5F).setUnlocalizedName("combiner_front").setCreativeTab(InitTabs.CombinerTab);
 	public final static	Block CombineHeaterOn = (new CombMachine(2357, true)).setHardness(3.5F).setLightValue(1.0F).setUnlocalizedName("combiner_front_lit");
 	public final static Block StoneGlass = new StoneGlass(2358).setHardness(3.5F).setUnlocalizedName("StoneGlass");
 	public final static Block StonePlank = new StoneWood(2359).setHardness(3.5F).setUnlocalizedName("StonePlank");

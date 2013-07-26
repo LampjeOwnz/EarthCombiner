@@ -8,7 +8,6 @@ import Earth.Combiner.ItemTools.CombTool;
 import Earth.Combiner.ItemTools.CombinerItem;
 import Earth.Combiner.ItemTools.InitItemTools;
 import Earth.Combiner.core.proxy.CommonProxy;
-import Earth.Combiner.lib.CombinerTabs;
 import Earth.Combiner.lib.NewMaterials;
 import Earth.Combiner.lib.References;
 import Earth.Combiner.MachineUtilety.GuiHandler;
@@ -16,6 +15,7 @@ import Earth.Combiner.MachineUtilety.TileEntityCombMachine;
 import Earth.Combiner.MachineUtilety.CombMachinepacketHandler;
 import Earth.Combiner.Recipes.BlockRecipes;
 import Earth.Combiner.Recipes.ItemToolRecipes;
+import Earth.Combiner.Tabs.InitTabs;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
@@ -73,7 +73,7 @@ public class CombinerCore {
 
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
-        	CombinerTabs.init();
+        	InitTabs.init();
         	NewMaterials.init();
         	InitItemTools.init();
         	ItemToolRecipes.init();

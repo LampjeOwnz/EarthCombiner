@@ -1,9 +1,9 @@
-package Earth.Combiner.lib;
+package Earth.Combiner.Tabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import Earth.Combiner.CombinerTab;
+import Earth.Combiner.Tabs.CombinerTab;
 
-public class CombinerTabs {
+public class InitTabs {
 	
 	// New Creative tabs
 	public static CreativeTabs CombinerTab;

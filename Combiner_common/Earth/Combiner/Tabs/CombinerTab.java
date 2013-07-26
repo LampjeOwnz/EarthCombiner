@@ -1,4 +1,4 @@
-package Earth.Combiner;
+package Earth.Combiner.Tabs;
 
 import Earth.Combiner.ItemTools.InitItemTools;
 import cpw.mods.fml.relauncher.Side;
