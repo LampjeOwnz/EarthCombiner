@@ -33,16 +33,46 @@ public class CombMachineRecipes
     /** De recipes natuurlijk. */
     private CombMachineRecipes()
     {
-    	this.addCombining(new ItemStack(Block.planks), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompWoodScrap,1), 0.7F);
-    	this.addCombining(new ItemStack(Item.coal), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompCoalScrap,1), 0.7F);
-    	this.addCombining(new ItemStack(Block.glass), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StoneGlass,1), 0.7F);
+    	// One Slot recipes
+    	this.addCombiningOneSlot(new ItemStack(Block.oreIron), new ItemStack(Item.ingotIron), 0.7F);
+    	this.addCombiningOneSlot(new ItemStack(Block.oreGold), new ItemStack(Item.ingotGold), 1.0F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreDiamond), new ItemStack(Item.diamond), 1.0F);
+        this.addCombiningOneSlot(new ItemStack(Block.sand), new ItemStack(Block.glass), 0.1F);
+        this.addCombiningOneSlot(new ItemStack(Item.porkRaw), new ItemStack(Item.porkCooked), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Item.beefRaw), new ItemStack(Item.beefCooked), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Item.chickenRaw), new ItemStack(Item.chickenCooked), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Item.fishRaw), new ItemStack(Item.fishCooked), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Block.cobblestone), new ItemStack(Block.stone), 0.1F);
+        this.addCombiningOneSlot(new ItemStack(Item.clay), new ItemStack(Item.brick), 0.3F);
+        this.addCombiningOneSlot(new ItemStack(Block.blockClay), new ItemStack(Block.field_111032_cD), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Block.cactus), new ItemStack(Item.dyePowder, 1, 2), 0.2F);
+        this.addCombiningOneSlot(new ItemStack(Block.wood), new ItemStack(Item.coal, 1, 1), 0.15F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreEmerald), new ItemStack(Item.emerald), 1.0F);
+        this.addCombiningOneSlot(new ItemStack(Item.potato), new ItemStack(Item.bakedPotato), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Block.netherrack), new ItemStack(Item.netherrackBrick), 0.1F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreCoal), new ItemStack(Item.coal), 0.1F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreRedstone), new ItemStack(Item.redstone), 0.7F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreLapis), new ItemStack(Item.dyePowder, 1, 4), 0.2F);
+        this.addCombiningOneSlot(new ItemStack(Block.oreNetherQuartz), new ItemStack(Item.netherQuartz), 0.2F);
+    	
+    	// Two Slot recipes
+    	this.addCombiningTwoSlots(new ItemStack(Block.planks), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompWoodScrap,1), 0.7F);
+    	this.addCombiningTwoSlots(new ItemStack(Item.coal), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompCoalScrap,1), 0.7F);
+    	this.addCombiningTwoSlots(new ItemStack(Block.glass), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StoneGlass,1), 0.7F);
     }
 
     /** Deze voegt de recipes en de exp in de bij behorende lijsten. */
-    public void addCombining(ItemStack slot1, ItemStack slot2, ItemStack slot3, float par3)
+    public void addCombiningOneSlot(ItemStack slot1, ItemStack out, float par3)
     {
-     	this.CombiningCombTwoSlots.put(Arrays.asList(slot1.itemID, slot2.itemID), slot3);
-     	this.experienceList.put(Integer.valueOf(slot3.itemID), Float.valueOf(par3));
+     	this.CombiningCombOneSlot.put(Arrays.asList(slot1.itemID), out);
+     	this.experienceList.put(Integer.valueOf(out.itemID), Float.valueOf(par3));
+    }
+    
+    /** Deze voegt de recipes en de exp in de bij behorende lijsten. */
+    public void addCombiningTwoSlots(ItemStack slot1, ItemStack slot2, ItemStack out, float par3)
+    {
+     	this.CombiningCombTwoSlots.put(Arrays.asList(slot1.itemID, slot2.itemID), out);
+     	this.experienceList.put(Integer.valueOf(out.itemID), Float.valueOf(par3));
     }
     
     /** Dit is nodig om het exp te krijgen. */
@@ -53,7 +83,19 @@ public class CombMachineRecipes
     }
     
     /** Dit is nodig om de ouput te krijgen van de recipe input. */
-    public ItemStack getCombiningResult(ItemStack slot1, ItemStack slot2) 
+    public ItemStack getCombiningResultOneSlot(ItemStack slot1) 
+    {
+        if (slot1 == null){ return null;}
+        ItemStack ret = (ItemStack)CombiningCombOneSlot.get(Arrays.asList(slot1.itemID));
+        if (ret != null) 
+        {
+            return ret;
+        }
+        return (ItemStack)CombiningCombOneSlot.get(Arrays.asList(slot1.itemID));
+    }
+    
+    /** Dit is nodig om de ouput te krijgen van de recipe input. */
+    public ItemStack getCombiningResultTwoSlots(ItemStack slot1, ItemStack slot2) 
     {
         if (slot1 == null){ return null;}
         if (slot2 == null){ return null;}

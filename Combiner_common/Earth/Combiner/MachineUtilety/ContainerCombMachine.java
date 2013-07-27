@@ -127,7 +127,14 @@ public class ContainerCombMachine extends Container
             }
             else if (par2 != 1 && par2 != 0)
             {
-                if (CombMachineRecipes.smelting().getCombiningResult(itemstack1, itemstack1) != null)
+            	if (CombMachineRecipes.smelting().getCombiningResultOneSlot(itemstack1) != null)
+                {
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
+                    {
+                        return null;
+                    }
+                }
+                if (CombMachineRecipes.smelting().getCombiningResultTwoSlots(itemstack1, itemstack1) != null)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {

@@ -36,6 +36,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     public int combmachineCombTime;
     public int currentItemCombTime;
     public int combmachineCombDCurTime;
+    public int NumberOfSlots;
     private String field_94130_e;
  
     public int getSizeInventory()
@@ -271,17 +272,25 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     /** Hier pakt hij de recipe en of hij aan mag of niet. */
     private boolean canCombine()
     {
+    	this.NumberOfSlots = 0;
         if (this.combmachineItemStacks[0] == null)
         {
             return false;
         }
         else if (this.combmachineItemStacks[2] == null)
         {
-            return false;
+        	ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[0]);
+        	this.NumberOfSlots = 1;
+            if (itemstack == null) return false;
+            if (this.combmachineItemStacks[3] == null) return true;
+            if (!this.combmachineItemStacks[3].isItemEqual(itemstack)) return false;
+            int result = combmachineItemStacks[3].stackSize + itemstack.stackSize;
+            return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }
         else
         {
-            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResult(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
+            this.NumberOfSlots = 2;
             if (itemstack == null) return false;
             if (this.combmachineItemStacks[3] == null) return true;
             if (!this.combmachineItemStacks[3].isItemEqual(itemstack)) return false;
@@ -293,34 +302,56 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     /** Hier gebruikt hij de recipe en maakt er een output van. */
     public void smeltItem()
     {
-    	 if (this.canCombine())
-         {
-             ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResult(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
-             
-             if (this.combmachineItemStacks[3] == null)
-             {
-                 this.combmachineItemStacks[3] = itemstack.copy();
-             }
-             else if (this.combmachineItemStacks[3].isItemEqual(itemstack))
-             {
-            	 combmachineItemStacks[3].stackSize += itemstack.stackSize;
-             }
-             --this.combmachineItemStacks[0].stackSize;
-             --this.combmachineItemStacks[2].stackSize; 
+    	if ((this.canCombine()) && (this.NumberOfSlots == 1))
+        {
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[0]);
+            
+            if (this.combmachineItemStacks[3] == null)
+            {
+                this.combmachineItemStacks[3] = itemstack.copy();
+            }
+            else if (this.combmachineItemStacks[3].isItemEqual(itemstack))
+            {
+           	 combmachineItemStacks[3].stackSize += itemstack.stackSize;
+            }
+            
+            --this.combmachineItemStacks[0].stackSize;
 
-             if ((this.combmachineItemStacks[0].stackSize <= 0) && (this.combmachineItemStacks[2].stackSize <= 0))
-             {
-                 this.combmachineItemStacks[0] = null;
-                 this.combmachineItemStacks[2] = null;
-             }
-             if (this.combmachineItemStacks[0].stackSize <= 0)
-             {
-            	 this.combmachineItemStacks[0] = null;
-             }
-             if (this.combmachineItemStacks[2].stackSize <= 0)
-             {
-            	 this.combmachineItemStacks[2] = null;
-             }
+            if (this.combmachineItemStacks[0].stackSize <= 0)
+            {
+           	 	this.combmachineItemStacks[0] = null;
+            }
+            
+        }
+    	else if ((this.canCombine()) && (this.NumberOfSlots == 2))
+        {
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
+             
+            if (this.combmachineItemStacks[3] == null)
+            {
+                this.combmachineItemStacks[3] = itemstack.copy();
+            }
+            else if (this.combmachineItemStacks[3].isItemEqual(itemstack))
+            {
+           	 combmachineItemStacks[3].stackSize += itemstack.stackSize;
+            }
+            
+            --this.combmachineItemStacks[0].stackSize;
+            --this.combmachineItemStacks[2].stackSize; 
+
+            if ((this.combmachineItemStacks[0].stackSize <= 0) && (this.combmachineItemStacks[2].stackSize <= 0))
+            {
+                this.combmachineItemStacks[0] = null;
+                this.combmachineItemStacks[2] = null;
+            }
+            if (this.combmachineItemStacks[0].stackSize <= 0)
+            {
+           	 	this.combmachineItemStacks[0] = null;
+            }
+            if (this.combmachineItemStacks[2].stackSize <= 0)
+            {
+            	this.combmachineItemStacks[2] = null;
+            }
              
          }
     }
