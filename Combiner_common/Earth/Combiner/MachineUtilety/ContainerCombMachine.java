@@ -23,6 +23,7 @@ public class ContainerCombMachine extends Container
         this.addSlotToContainer(new Slot(par2TileEntityCombMachine, 2, 39, 17));
         this.addSlotToContainer(new Slot(par2TileEntityCombMachine, 1, 28, 53));
         this.addSlotToContainer(new SlotCombMachine(par1InventoryPlayer.player, par2TileEntityCombMachine, 3, 116, 35));
+        this.addSlotToContainer(new Slot(par2TileEntityCombMachine, 4, 154, 6));
         int i;
 
         for (i = 0; i < 3; ++i)

@@ -30,13 +30,15 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     private static final int[] slots_sides = new int[] {1};
 
     /** Hoeveleheid slots. */
-    private ItemStack[] combmachineItemStacks = new ItemStack[4];
+    private ItemStack[] combmachineItemStacks = new ItemStack[5];
 
     /** mechaniek variabelen */
     public int combmachineCombTime;
     public int currentItemCombTime;
     public int combmachineCombDCurTime;
     public int NumberOfSlots;
+    //public int ReduceTime = 0;
+    public int Timer = 200;
     private String field_94130_e;
  
     public int getSizeInventory()
@@ -139,6 +141,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
         this.combmachineCombTime = par1NBTTagCompound.getShort("CombTime");
         this.combmachineCombDCurTime = par1NBTTagCompound.getShort("CombDurTime");
         this.currentItemCombTime = getItemCombTime(this.combmachineItemStacks[1]);
+        //this.ReduceTime = getItemReduceTime(this.combmachineItemStacks[4]);
 
         if (par1NBTTagCompound.hasKey("Combiner Machine"))
         {
@@ -180,7 +183,33 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     @SideOnly(Side.CLIENT)
     public int getCombDurProgressScaled(int par1)
     {
-        return this.combmachineCombDCurTime * par1 / 200;
+    	int timer;
+    	ItemStack Items = this.combmachineItemStacks[4];
+        if (Items != null)
+        {
+        	timer = getItemReduceTime(this.combmachineItemStacks[4]);
+        }
+        else
+        {
+        	timer = 0;
+        }
+        //return this.combmachineCombDCurTime * par1 / (200 - timer); 	
+    	if ((this.combmachineCombDCurTime >= 50) && (timer == 150))
+    	{
+    		 return this.combmachineCombDCurTime * par1 / 200;
+    	}
+    	else if ((this.combmachineCombDCurTime >= 100) && (timer == 100))
+    	{
+    		return this.combmachineCombDCurTime * par1 / 200;
+    	}
+    	else if ((this.combmachineCombDCurTime >= 150) && (timer == 50))
+    	{
+    		return this.combmachineCombDCurTime * par1 / 200;
+    	}
+    	else
+    	{
+    		return this.combmachineCombDCurTime * par1 / (200 - timer);
+    	}
     }
 
     @SideOnly(Side.CLIENT)
@@ -237,13 +266,72 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
 
             if (this.isCombining() && this.canCombine())
             {
-                ++this.combmachineCombDCurTime;
-
-                if (this.combmachineCombDCurTime == 200)
+            	int ReduceTime;
+            	ItemStack reducer = this.combmachineItemStacks[4];
+                if (reducer != null)
                 {
-                    this.combmachineCombDCurTime = 0;
-                    this.smeltItem();
-                    flag1 = true;
+                	ReduceTime = getItemReduceTime(this.combmachineItemStacks[4]);
+                }
+                else
+                {
+                	ReduceTime = 0;
+                }
+                
+                ++this.combmachineCombDCurTime;
+                
+                if ((this.combmachineCombDCurTime >= 50) && (ReduceTime == 150))
+                {
+                	if (this.combmachineCombDCurTime == 200) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
+                }
+                else 
+                {
+                	if (this.combmachineCombDCurTime == 200 - ReduceTime) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
+                }
+                if ((this.combmachineCombDCurTime >= 95) && (ReduceTime == 100))
+                {
+                	if (this.combmachineCombDCurTime == 200) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
+                }
+                else
+                {
+                	if (this.combmachineCombDCurTime == 200 - ReduceTime) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
+                }
+                if ((this.combmachineCombDCurTime >= 145) && (ReduceTime == 50))
+                {
+                	if (this.combmachineCombDCurTime == 200) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
+                }
+                else
+                {
+                	if (this.combmachineCombDCurTime == 200 - ReduceTime) 
+                	{
+                		this.combmachineCombDCurTime = 0;
+                		this.smeltItem();
+                		flag1 = true;
+                	}
                 }
             }
             else
@@ -339,11 +427,6 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
             --this.combmachineItemStacks[0].stackSize;
             --this.combmachineItemStacks[2].stackSize; 
 
-            if ((this.combmachineItemStacks[0].stackSize <= 0) && (this.combmachineItemStacks[2].stackSize <= 0))
-            {
-                this.combmachineItemStacks[0] = null;
-                this.combmachineItemStacks[2] = null;
-            }
             if (this.combmachineItemStacks[0].stackSize <= 0)
             {
            	 	this.combmachineItemStacks[0] = null;
@@ -394,10 +477,33 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
+    
+    public static int getItemReduceTime(ItemStack reducestack)
+    {
+    	if (reducestack == null)
+        {
+            return 0;
+        }
+    	else
+    	{
+    		int i = reducestack.getItem().itemID;
+    		if (i == InitItemTools.CombinerIron.itemID) return 50;
+    		if (i == InitItemTools.CombinerGold.itemID) return 100;
+    		if (i == InitItemTools.CombinerEmerald.itemID) return 150;
+    		
+    		
+    		return GameRegistry.getFuelValue(reducestack);
+    	}
+    }
 
     public static boolean isItemFuel(ItemStack par0ItemStack)
     {
         return getItemCombTime(par0ItemStack) > 0;
+    }
+    
+    public static boolean isItemReducer(ItemStack reducerstack)
+    {
+    	return getItemReduceTime(reducerstack) > 0;
     }
 
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
@@ -412,6 +518,11 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
     {
         return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
+    }
+    
+    public boolean isItemValidForReducer(int par1, ItemStack par2ItemStack)
+    {
+        return par1 == 2 ? false : (par1 == 1 ? isItemReducer(par2ItemStack) : true);
     }
 
     public int[] getAccessibleSlotsFromSide(int par1)
