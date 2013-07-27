@@ -2,6 +2,9 @@ package Earth.Combiner.lib;
 
 public class Strings {
 	
+	// Needed for the textures
+    public static final String modID = "combinercore";
+	
 	// Item Strings
 	public static final String ROUNDSTONE_NAME = "Stone Round";
 	public static final String COMBSTONE_NAME = "Combiner Stone";
@@ -13,17 +16,16 @@ public class Strings {
 	public static final String COMPWOODSCRAP_NAME = "Compressed Wood Scrap";
 	public static final String COMPCOALSCRAP_NAME = "Compressed Coal Scrap";
 	
-	
-	// Item Strings
+	// Tool Strings
 	public static final String COBBLETOOL_NAME = "Cobble Tool";
 	public static final String IRONTOOL_NAME = "Iron Tool";
 	public static final String GOLDTOOL_NAME = "Gold Tool";
 	public static final String EMERALDTOOL_NAME = "Diamond Tool";
-	
 	
 	// Block Strings
 	public static final String COMB_MACHINEON_NAME = "CombMachine";
 	public static final String COMB_MACHINEOFF_NAME = "CombinerMachine";
 	public static final String STONEGLASS_NAME = "Stone Glass";
 	public static final String STONEPLANK_NAME = "Stone Plank";
+
 }

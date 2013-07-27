@@ -1,8 +1,8 @@
 package Earth.Combiner.Blocks;
 
 
-import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Tabs.InitTabs;
+import Earth.Combiner.lib.Strings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -20,7 +20,7 @@ public class StoneWood extends Block
     @Override
    	@SideOnly(Side.CLIENT)
    	public void registerIcons(IconRegister iconRegister) {
-   		this.blockIcon = iconRegister.registerIcon(CombinerCore.modID + ":" + (this.getUnlocalizedName().substring(5)));
+   		this.blockIcon = iconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));
    	}
 }
 

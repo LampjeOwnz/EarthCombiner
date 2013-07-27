@@ -1,5 +1,6 @@
 package Earth.Combiner.ItemTools;
 
+import Earth.Combiner.lib.IDs;
 import Earth.Combiner.lib.Strings;
 import Earth.Combiner.lib.NewMaterials;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -8,21 +9,21 @@ import net.minecraft.item.Item;
 public class InitItemTools {
 
 	// Items
-    public final static Item RoundStone = new CombinerItem(17070).setUnlocalizedName("RoundStone");
-    public final static Item CombinerStone = new CombinerItem(17071).setUnlocalizedName("CombinerStone");
-    public final static Item CombinerIron = new CombinerItem(17072).setUnlocalizedName("CombinerIron");
-    public final static Item CombinerGold = new CombinerItem(17073).setUnlocalizedName("CombinerGold");
-    public final static Item CombinerEmerald = new CombinerItem(17074).setUnlocalizedName("CombinerEmerald");
-    public final static Item WoodScrap = new CombinerItem(17075).setUnlocalizedName("WoodScrap");
-    public final static Item CobbleScrap = new CombinerItem(17076).setUnlocalizedName("CobbleScrap");
-    public final static Item CompWoodScrap = new CombinerItem(17077).setUnlocalizedName("CompressedWoodScrap");
-    public final static Item CompCoalScrap = new CombinerItem(17078).setUnlocalizedName("CompressedCoalScrap");
+    public final static Item RoundStone = new CombinerItem(IDs.ROUNDSTONE_ID).setUnlocalizedName("RoundStone");
+    public final static Item CombinerStone = new CombinerItem(IDs.COMBSTONE_ID).setUnlocalizedName("CombinerStone");
+    public final static Item CombinerIron = new CombinerItem(IDs.COMBIRON_ID).setUnlocalizedName("CombinerIron");
+    public final static Item CombinerGold = new CombinerItem(IDs.COMBGOLD_ID).setUnlocalizedName("CombinerGold");
+    public final static Item CombinerEmerald = new CombinerItem(IDs.COMBEMERALD_ID).setUnlocalizedName("CombinerEmerald");
+    public final static Item WoodScrap = new CombinerItem(IDs.WOODSCRAP_ID).setUnlocalizedName("WoodScrap");
+    public final static Item CobbleScrap = new CombinerItem(IDs.COBBLESCRAP_ID).setUnlocalizedName("CobbleScrap");
+    public final static Item CompWoodScrap = new CombinerItem(IDs.COMPWOODSCRAP_ID).setUnlocalizedName("CompressedWoodScrap");
+    public final static Item CompCoalScrap = new CombinerItem(IDs.COMPCOALSCRAP_ID).setUnlocalizedName("CompressedCoalScrap");
     
     // Tools
-    public final static Item ToolStone = new CombTool(17180, NewMaterials.NewSTONE).setUnlocalizedName("ToolStone");
-    public final static Item ToolIron = new CombTool(17181, NewMaterials.NewIRON).setUnlocalizedName("ToolIron");
-    public final static Item ToolGold = new CombTool(17182, NewMaterials.NewGOLD).setUnlocalizedName("ToolGold");
-    public final static Item ToolEmerald = new CombTool(17183, NewMaterials.NewEMERALD).setUnlocalizedName("ToolEmerald");
+    public final static Item ToolStone = new CombTool(IDs.TOOLSTONE_ID, NewMaterials.NewSTONE).setUnlocalizedName("ToolStone");
+    public final static Item ToolIron = new CombTool(IDs.TOOLIRON_ID, NewMaterials.NewIRON).setUnlocalizedName("ToolIron");
+    public final static Item ToolGold = new CombTool(IDs.TOOLGOLD_ID, NewMaterials.NewGOLD).setUnlocalizedName("ToolGold");
+    public final static Item ToolEmerald = new CombTool(IDs.TOOLEMERALD_ID, NewMaterials.NewEMERALD).setUnlocalizedName("ToolEmerald");
     
     public static void init(){
 

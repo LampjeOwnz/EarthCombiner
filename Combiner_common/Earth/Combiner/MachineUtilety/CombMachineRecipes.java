@@ -19,7 +19,9 @@ public class CombMachineRecipes
 
     /** De lijst voor recipes en experience. */
     private Map experienceList = new HashMap();
-    private HashMap<List<Integer>, ItemStack> CombiningCombList = new HashMap<List<Integer>, ItemStack>();
+    private Map CombiningCombList = new HashMap();
+    private HashMap<List<Integer>, ItemStack> CombiningCombOneSlot = new HashMap<List<Integer>, ItemStack>();
+    private HashMap<List<Integer>, ItemStack> CombiningCombTwoSlots = new HashMap<List<Integer>, ItemStack>();
     private HashMap<List<Integer>, Float> metaExperience = new HashMap<List<Integer>, Float>();
 
     /** Dit word gebruikt voor getCombiningResults. */
@@ -39,8 +41,8 @@ public class CombMachineRecipes
     /** Deze voegt de recipes en de exp in de bij behorende lijsten. */
     public void addCombining(ItemStack slot1, ItemStack slot2, ItemStack slot3, float par3)
     {
-    	this.CombiningCombList.put(Arrays.asList(slot1.itemID, slot2.itemID), slot3);
-    	this.experienceList.put(Integer.valueOf(slot3.itemID), Float.valueOf(par3));
+     	this.CombiningCombTwoSlots.put(Arrays.asList(slot1.itemID, slot2.itemID), slot3);
+     	this.experienceList.put(Integer.valueOf(slot3.itemID), Float.valueOf(par3));
     }
     
     /** Dit is nodig om het exp te krijgen. */
@@ -55,12 +57,15 @@ public class CombMachineRecipes
     {
         if (slot1 == null){ return null;}
         if (slot2 == null){ return null;}
-        ItemStack ret = (ItemStack)CombiningCombList.get(Arrays.asList(slot1.itemID, slot2.itemID));
-        if (ret != null) 
+        else
         {
-            return ret;
+        	ItemStack ret = (ItemStack)CombiningCombTwoSlots.get(Arrays.asList(slot1.itemID, slot2.itemID));
+        	if (ret != null) 
+        	{
+            	return ret;
+        	}
         }
-        return (ItemStack)CombiningCombList.get(Arrays.asList(slot1.itemID, slot2.itemID));
+        return (ItemStack)CombiningCombTwoSlots.get(Arrays.asList(slot1.itemID, slot2.itemID));
     }
 
     /** Hier pakt hij het exp van de recipe (0.7F). */

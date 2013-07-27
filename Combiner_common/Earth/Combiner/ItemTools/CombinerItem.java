@@ -3,8 +3,8 @@ package Earth.Combiner.ItemTools;
 import net.minecraft.client.main.Main;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Tabs.InitTabs;
+import Earth.Combiner.lib.Strings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
  
@@ -19,6 +19,6 @@ public class CombinerItem extends Item{
         @Override
     	@SideOnly(Side.CLIENT)
     	public void registerIcons(IconRegister iconRegister) {
-    		this.itemIcon = iconRegister.registerIcon(CombinerCore.modID + ":" + (this.getUnlocalizedName().substring(5)));
+    		this.itemIcon = iconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));
     	}
 }

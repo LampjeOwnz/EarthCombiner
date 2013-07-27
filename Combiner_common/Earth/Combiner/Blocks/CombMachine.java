@@ -4,6 +4,7 @@ import java.util.Random;
 
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.MachineUtilety.TileEntityCombMachine;
+import Earth.Combiner.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -99,7 +100,7 @@ public class CombMachine extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon(CombinerCore.modID + ":" + (this.getUnlocalizedName().substring(5)));;
+        this.blockIcon = par1IconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));;
         this.combmachineIconSide = par1IconRegister.registerIcon("combinercore:combiner_side");
         this.combmachineIconFront = par1IconRegister.registerIcon(this.isActive ? "combinercore:combiner_front_lit" : "combinercore:combiner_front");
         this.combmachnineIconTop = par1IconRegister.registerIcon("combinercore:combiner_top");

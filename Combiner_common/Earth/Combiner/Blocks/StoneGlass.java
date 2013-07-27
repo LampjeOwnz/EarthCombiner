@@ -2,11 +2,10 @@ package Earth.Combiner.Blocks;
 
 
 import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Tabs.InitTabs;
+import Earth.Combiner.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -23,7 +22,7 @@ public class StoneGlass extends Block
     @Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(CombinerCore.modID + ":" + (this.getUnlocalizedName().substring(5)));
+		this.blockIcon = iconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));
 	}
     
     public int quantityDropped(Random par1Random)

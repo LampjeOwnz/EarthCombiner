@@ -2,8 +2,8 @@ package Earth.Combiner.ItemTools; //The type com.google.common.collect.Multimap 
  
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Tabs.InitTabs;
+import Earth.Combiner.lib.Strings;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -77,7 +77,7 @@ public class CombTool extends ItemTool
     @Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon(CombinerCore.modID + ":" + (this.getUnlocalizedName().substring(5)));
+		this.itemIcon = iconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 }
 
