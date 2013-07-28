@@ -1,6 +1,7 @@
 package Earth.Combiner.MachineUtilety;
 
 import Earth.Combiner.CombinerCore;
+import Earth.Combiner.lib.Strings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,7 +15,7 @@ import org.lwjgl.opengl.GL11;// Cant import somhow ...
 @SideOnly(Side.CLIENT)
 public class GuiCombMachine extends GuiContainer
 {
-    private static final ResourceLocation field_110410_t = new ResourceLocation("combinercore", "/textures/gui/combheater.png");
+    //private static final ResourceLocation field_110410_t = new ResourceLocation("combinercore", "/textures/gui/combheater.png");
     
     private TileEntityCombMachine commachineInventory;
 
@@ -40,7 +41,8 @@ public class GuiCombMachine extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.func_110434_K().func_110577_a(field_110410_t);
+        //this.mc.func_110434_K().func_110577_a(field_110410_t);
+        mc.renderEngine.func_110577_a(Strings.GUI_COMBHEATER);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);

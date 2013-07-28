@@ -1,5 +1,8 @@
 package Earth.Combiner.lib;
 
+import java.util.List;
+import net.minecraft.util.ResourceLocation;
+
 public class Strings {
 	
 	// Needed for the textures
@@ -27,5 +30,11 @@ public class Strings {
 	public static final String COMB_MACHINEOFF_NAME = "CombinerMachine";
 	public static final String STONEGLASS_NAME = "Stone Glass";
 	public static final String STONEPLANK_NAME = "Stone Plank";
+	
+	// Gui stings
+	public static final String GUI_LOCATION = "/textures/gui/";
+	
+	// Gui final location
+	public static final ResourceLocation GUI_COMBHEATER = new ResourceLocation(modID, GUI_LOCATION + "combheater.png");
 
 }
