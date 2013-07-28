@@ -1,6 +1,6 @@
 package Earth.Combiner.lib;
 
-public class IDs {
+public class Ints {
 
 	// Item ID's
 	public static int ROUNDSTONE_ID = 17070;
@@ -24,5 +24,13 @@ public class IDs {
 	public static int COMBMACHINEON_ID = 2357;
 	public static int STONEGLASS_ID = 2358;
 	public static int STONEPLANK_ID = 2359;
+	
+	
+	// TileEntityCombMachine ints
+	public static int INPUT1 = 0;
+	public static int INPUT2 = 2;
+	public static int FUELSLOT = 1;
+	public static int OUTPUT = 3;
+	public static int UPGRADESLOT = 4;
 		
 }

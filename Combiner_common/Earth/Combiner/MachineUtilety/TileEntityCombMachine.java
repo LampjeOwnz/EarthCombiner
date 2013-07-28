@@ -3,6 +3,7 @@ package Earth.Combiner.MachineUtilety;
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Blocks.CombMachine;
 import Earth.Combiner.ItemTools.InitItemTools;
+import Earth.Combiner.lib.Ints;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,8 +38,6 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     public int currentItemCombTime;
     public int combmachineCombDCurTime;
     public int NumberOfSlots;
-    //public int ReduceTime = 0;
-    public int Timer = 200;
     private String field_94130_e;
  
     public int getSizeInventory()
@@ -140,7 +139,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
 
         this.combmachineCombTime = par1NBTTagCompound.getShort("CombTime");
         this.combmachineCombDCurTime = par1NBTTagCompound.getShort("CombDurTime");
-        this.currentItemCombTime = getItemCombTime(this.combmachineItemStacks[1]);
+        this.currentItemCombTime = getItemCombTime(this.combmachineItemStacks[Ints.FUELSLOT]);
         //this.ReduceTime = getItemReduceTime(this.combmachineItemStacks[4]);
 
         if (par1NBTTagCompound.hasKey("Combiner Machine"))
@@ -184,10 +183,10 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     public int getCombDurProgressScaled(int par1)
     {
     	int timer;
-    	ItemStack Items = this.combmachineItemStacks[4];
+    	ItemStack Items = this.combmachineItemStacks[Ints.UPGRADESLOT];
         if (Items != null)
         {
-        	timer = getItemReduceTime(this.combmachineItemStacks[4]);
+        	timer = getItemReduceTime(this.combmachineItemStacks[Ints.UPGRADESLOT]);
         }
         else
         {
@@ -245,19 +244,19 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
             {
             	if(this.canCombine())
             	{
-                    this.currentItemCombTime = this.combmachineCombTime = getItemCombTime(this.combmachineItemStacks[1]);
+                    this.currentItemCombTime = this.combmachineCombTime = getItemCombTime(this.combmachineItemStacks[Ints.FUELSLOT]);
                     
                     if (this.combmachineCombTime > 0)
                     {
                         flag1 = true;
 
-                        if (this.combmachineItemStacks[1] != null)
+                        if (this.combmachineItemStacks[Ints.FUELSLOT] != null)
                         {
-                            --this.combmachineItemStacks[1].stackSize;
+                            --this.combmachineItemStacks[Ints.FUELSLOT].stackSize;
 
-                            if (this.combmachineItemStacks[1].stackSize == 0)
+                            if (this.combmachineItemStacks[Ints.FUELSLOT].stackSize == 0)
                             {
-                                this.combmachineItemStacks[1] = this.combmachineItemStacks[1].getItem().getContainerItemStack(combmachineItemStacks[1]);
+                                this.combmachineItemStacks[Ints.FUELSLOT] = this.combmachineItemStacks[Ints.FUELSLOT].getItem().getContainerItemStack(combmachineItemStacks[Ints.FUELSLOT]);
                             }
                         }
                     }
@@ -267,10 +266,10 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
             if (this.isCombining() && this.canCombine())
             {
             	int ReduceTime;
-            	ItemStack reducer = this.combmachineItemStacks[4];
+            	ItemStack reducer = this.combmachineItemStacks[Ints.UPGRADESLOT];
                 if (reducer != null)
                 {
-                	ReduceTime = getItemReduceTime(this.combmachineItemStacks[4]);
+                	ReduceTime = getItemReduceTime(this.combmachineItemStacks[Ints.UPGRADESLOT]);
                 }
                 else
                 {
@@ -361,28 +360,28 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     private boolean canCombine()
     {
     	this.NumberOfSlots = 0;
-        if (this.combmachineItemStacks[0] == null)
+        if (this.combmachineItemStacks[Ints.INPUT1] == null)
         {
             return false;
         }
-        else if (this.combmachineItemStacks[2] == null)
+        else if (this.combmachineItemStacks[Ints.INPUT2] == null)
         {
-        	ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[0]);
+        	ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[Ints.INPUT1]);
         	this.NumberOfSlots = 1;
             if (itemstack == null) return false;
-            if (this.combmachineItemStacks[3] == null) return true;
-            if (!this.combmachineItemStacks[3].isItemEqual(itemstack)) return false;
-            int result = combmachineItemStacks[3].stackSize + itemstack.stackSize;
+            if (this.combmachineItemStacks[Ints.OUTPUT] == null) return true;
+            if (!this.combmachineItemStacks[Ints.OUTPUT].isItemEqual(itemstack)) return false;
+            int result = combmachineItemStacks[Ints.OUTPUT].stackSize + itemstack.stackSize;
             return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }
         else
         {
-            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[Ints.INPUT1], this.combmachineItemStacks[Ints.INPUT2]);
             this.NumberOfSlots = 2;
             if (itemstack == null) return false;
-            if (this.combmachineItemStacks[3] == null) return true;
-            if (!this.combmachineItemStacks[3].isItemEqual(itemstack)) return false;
-            int result = combmachineItemStacks[3].stackSize + itemstack.stackSize;
+            if (this.combmachineItemStacks[Ints.OUTPUT] == null) return true;
+            if (!this.combmachineItemStacks[Ints.OUTPUT].isItemEqual(itemstack)) return false;
+            int result = combmachineItemStacks[Ints.OUTPUT].stackSize + itemstack.stackSize;
             return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }
     }
@@ -392,48 +391,48 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     {
     	if ((this.canCombine()) && (this.NumberOfSlots == 1))
         {
-            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[0]);
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultOneSlot(this.combmachineItemStacks[Ints.INPUT1]);
             
-            if (this.combmachineItemStacks[3] == null)
+            if (this.combmachineItemStacks[Ints.OUTPUT] == null)
             {
-                this.combmachineItemStacks[3] = itemstack.copy();
+                this.combmachineItemStacks[Ints.OUTPUT] = itemstack.copy();
             }
-            else if (this.combmachineItemStacks[3].isItemEqual(itemstack))
+            else if (this.combmachineItemStacks[Ints.OUTPUT].isItemEqual(itemstack))
             {
-           	 combmachineItemStacks[3].stackSize += itemstack.stackSize;
+           	 combmachineItemStacks[Ints.OUTPUT].stackSize += itemstack.stackSize;
             }
             
-            --this.combmachineItemStacks[0].stackSize;
+            --this.combmachineItemStacks[Ints.INPUT1].stackSize;
 
-            if (this.combmachineItemStacks[0].stackSize <= 0)
+            if (this.combmachineItemStacks[Ints.INPUT1].stackSize <= 0)
             {
-           	 	this.combmachineItemStacks[0] = null;
+           	 	this.combmachineItemStacks[Ints.INPUT1] = null;
             }
             
         }
     	else if ((this.canCombine()) && (this.NumberOfSlots == 2))
         {
-            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[0], this.combmachineItemStacks[2]);
+            ItemStack itemstack = CombMachineRecipes.smelting().getCombiningResultTwoSlots(this.combmachineItemStacks[Ints.INPUT1], this.combmachineItemStacks[Ints.INPUT2]);
              
-            if (this.combmachineItemStacks[3] == null)
+            if (this.combmachineItemStacks[Ints.OUTPUT] == null)
             {
-                this.combmachineItemStacks[3] = itemstack.copy();
+                this.combmachineItemStacks[Ints.OUTPUT] = itemstack.copy();
             }
-            else if (this.combmachineItemStacks[3].isItemEqual(itemstack))
+            else if (this.combmachineItemStacks[Ints.OUTPUT].isItemEqual(itemstack))
             {
-           	 combmachineItemStacks[3].stackSize += itemstack.stackSize;
+           	 combmachineItemStacks[Ints.OUTPUT].stackSize += itemstack.stackSize;
             }
             
-            --this.combmachineItemStacks[0].stackSize;
-            --this.combmachineItemStacks[2].stackSize; 
+            --this.combmachineItemStacks[Ints.INPUT1].stackSize;
+            --this.combmachineItemStacks[Ints.INPUT2].stackSize; 
 
-            if (this.combmachineItemStacks[0].stackSize <= 0)
+            if (this.combmachineItemStacks[Ints.INPUT1].stackSize <= 0)
             {
-           	 	this.combmachineItemStacks[0] = null;
+           	 	this.combmachineItemStacks[Ints.INPUT1] = null;
             }
-            if (this.combmachineItemStacks[2].stackSize <= 0)
+            if (this.combmachineItemStacks[Ints.INPUT2].stackSize <= 0)
             {
-            	this.combmachineItemStacks[2] = null;
+            	this.combmachineItemStacks[Ints.INPUT2] = null;
             }
              
          }
@@ -496,6 +495,15 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     	}
     }
 
+    public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+    {
+        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+    }
+
+    public void openChest() {}
+
+    public void closeChest() {}
+    
     public static boolean isItemFuel(ItemStack par0ItemStack)
     {
         return getItemCombTime(par0ItemStack) > 0;
@@ -506,15 +514,6 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     	return getItemReduceTime(reducerstack) > 0;
     }
 
-    public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
-    {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
-    }
-
-    public void openChest() {}
-
-    public void closeChest() {}
-
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
     {
         return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
@@ -522,7 +521,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
     
     public boolean isItemValidForReducer(int par1, ItemStack par2ItemStack)
     {
-        return par1 == 2 ? false : (par1 == 1 ? isItemReducer(par2ItemStack) : true);
+        return par1 == 2 ? false : (par1 == 4 ? isItemReducer(par2ItemStack) : true);
     }
 
     public int[] getAccessibleSlotsFromSide(int par1)

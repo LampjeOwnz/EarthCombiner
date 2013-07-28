@@ -6,7 +6,7 @@ import Earth.Combiner.core.proxy.CommonProxy;
 import Earth.Combiner.lib.Mechanics;
 import Earth.Combiner.lib.NewMaterials;
 import Earth.Combiner.lib.References;
-import Earth.Combiner.MachineUtilety.CombMachinepacketHandler;
+import Earth.Combiner.core.handlers.PacketHandler;
 import Earth.Combiner.Recipes.BlockRecipes;
 import Earth.Combiner.Recipes.ItemToolRecipes;
 import Earth.Combiner.Tabs.InitTabs;
@@ -30,7 +30,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 	clientSideRequired	= true, 
 	serverSideRequired	= false, 
 	channels 			= "CombinerCore", 
-	packetHandler 		= CombMachinepacketHandler.class
+	packetHandler 		= PacketHandler.class
 )
 
 public class CombinerCore {
