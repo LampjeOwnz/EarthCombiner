@@ -73,39 +73,4 @@ public class Ints {
 	public static int BUCKETOUT = 2;
 	
 }
-	/**
-	public static void init(File configFile){
-		
-		config = new Configuration(configFile);
-		
-		try
-		{
-			config.load();
-			
-			
-			ROUNDSTONEID = config.getItem("RoundStone ID", 17070, null).getInt();
-			COMBSTONEID = config.getItem("CombStone ID", 17071, null).getInt();
-			COMBIRONID = config.getItem("CombIron ID", 17072, null).getInt();
-			COMBGOLDID = config.getItem("CombGold ID", 17073, null).getInt();
-			COMBEMERALDID = config.getItem("CombDiamond ID", 17074, null).getInt();
-			WOODSCRAPID = config.getItem("WoodScrap ID", 17075, null).getInt();
-			COBBLESCRAPID = config.getItem("CobbleScrap ID", 17076, null).getInt();
-			COMPWOODSCRAPID = config.getItem("CompWoodScrap ID", 17077, null).getInt();
-			COMPCOALSCRAPID = config.getItem("CompCoalScrap ID", 17078, null).getInt();
-			
-			
-
-			FMLCommonHandler.instance().getFMLLogger().log(Level.INFO, "[CombinerCore] Generated Config!");
-		}
-		catch (Exception e)
-		{
-			FMLLog.log(Level.SEVERE, e, "CombinerCore has had a problem loading its configuration");
-		}
-		finally
-		{
-			if (config.hasChanged()) {
-				config.save();
-			}
-		}
-	}**/
 

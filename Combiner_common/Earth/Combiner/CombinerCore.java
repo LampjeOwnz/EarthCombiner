@@ -70,10 +70,7 @@ public class CombinerCore {
         	
         	InitBlocks.init();
         	
-        	BlockRecipes.init();
-        	
-        	//ConfigurationHander.init(event.getSuggestedConfigurationFile());
-        	
+        	BlockRecipes.init();   	
         }
         
                

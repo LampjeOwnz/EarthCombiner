@@ -91,10 +91,6 @@ public class CombMachine extends BlockContainer
     public Icon getIcon(int side, int meta)
     {
         return side == 1 ? this.combmachnineIconTop : (side == 0 ? this.combmachnineIconTop : (side != meta ? this.combmachineIconSide : this.combmachineIconFront));
-        //if(side == 0) return furnaceIconTop;
-        //else if(side == 1) return furnaceIconTop;
-        //else if(side != meta) return furnaceIconSide;
-        //else return furnaceIconFront;
     }
     
     @SideOnly(Side.CLIENT)
