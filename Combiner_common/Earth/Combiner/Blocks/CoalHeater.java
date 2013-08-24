@@ -2,8 +2,14 @@ package Earth.Combiner.Blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import Earth.Combiner.CombinerCore;
-import Earth.Combiner.Utilety.MachineUtilety.TileEntityCombMachine;
+import Earth.Combiner.Utilety.CoalHeaterUtilety.TileEntityCoalHeater;
+import Earth.Combiner.core.packets.Waterpacket;
+//import Earth.Combiner.Utilety.MachineUtilety.TileEntityCombMachine;
 import Earth.Combiner.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -20,23 +26,23 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class CombMachine extends BlockContainer
-{
-    private final Random combmachineRand = new Random();
+public class CoalHeater extends BlockContainer {
+	
+	private final Random coalheaterRand = new Random();
     private final boolean isActive;
     
     private static boolean keepCombMachineInventory;
     @SideOnly(Side.CLIENT)
-    private Icon combmachnineIconTop;
+    private Icon coalheaterIconTop;
     @SideOnly(Side.CLIENT)
-    private Icon combmachineIconFront;
+    private Icon coalheaterIconFront;
     @SideOnly(Side.CLIENT)
-    private Icon combmachineIconSide;
+    private Icon coalheaterIconSide;
+    @SideOnly(Side.CLIENT)
+    private Icon coalheaterIconBack;
 
-    public CombMachine(int par1, boolean par2)
+    public CoalHeater(int par1, boolean par2)
     {
         super(par1, Material.rock);
         this.isActive = par2;
@@ -44,7 +50,7 @@ public class CombMachine extends BlockContainer
 
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return InitBlocks.CombineHeaterOff.blockID;
+        return InitBlocks.CoalHeaterOff.blockID;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
@@ -90,20 +96,17 @@ public class CombMachine extends BlockContainer
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-        return side == 1 ? this.combmachnineIconTop : (side == 0 ? this.combmachnineIconTop : (side != meta ? this.combmachineIconSide : this.combmachineIconFront));
-        //if(side == 0) return furnaceIconTop;
-        //else if(side == 1) return furnaceIconTop;
-        //else if(side != meta) return furnaceIconSide;
-        //else return furnaceIconFront;
+        return side == 1 ? this.coalheaterIconTop : (side == 0 ? this.coalheaterIconTop : (side != meta ? this.coalheaterIconSide  : this.coalheaterIconFront));
     }
     
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon(Strings.modID + ":" + (this.getUnlocalizedName().substring(5)));;
-        this.combmachineIconSide = par1IconRegister.registerIcon("combinercore:combiner_side");
-        this.combmachineIconFront = par1IconRegister.registerIcon(this.isActive ? "combinercore:combiner_front_lit" : "combinercore:combiner_front");
-        this.combmachnineIconTop = par1IconRegister.registerIcon("combinercore:combiner_top");
+        this.coalheaterIconSide = par1IconRegister.registerIcon("combinercore:coalheater_side");
+        this.coalheaterIconFront = par1IconRegister.registerIcon(this.isActive ? "combinercore:coalheater_front_lit" : "combinercore:coalheater_front");
+        this.coalheaterIconTop = par1IconRegister.registerIcon("combinercore:coalheater_top");
+        this.coalheaterIconBack = par1IconRegister.registerIcon("combinercore:coalheater_back");
     }
 
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t) {
@@ -115,6 +118,12 @@ public class CombMachine extends BlockContainer
 		}
 
 		player.openGui(CombinerCore.instance, 0, world, x, y, z);
+		
+		// Send to server
+		//PacketDispatcher.sendPacketToServer(new Waterpacket("Hello World!").makePacket());
+
+		// send to player
+		//PacketDispatcher.sendPacketToPlayer(new Waterpacket("Hello World!").makePacket(), (Player)player);
 
 		return true;
 	}
@@ -127,11 +136,11 @@ public class CombMachine extends BlockContainer
 
         if (par0)
         {
-            par1World.setBlock(par2, par3, par4, InitBlocks.CombineHeaterOn.blockID);
+            par1World.setBlock(par2, par3, par4, InitBlocks.CoalHeaterOn.blockID);
         }
         else
         {
-            par1World.setBlock(par2, par3, par4, InitBlocks.CombineHeaterOff.blockID);
+            par1World.setBlock(par2, par3, par4, InitBlocks.CoalHeaterOff.blockID);
         }
 
         keepCombMachineInventory = false;
@@ -181,7 +190,7 @@ public class CombMachine extends BlockContainer
 
     public TileEntity createNewTileEntity(World par1World)
     {
-        return new TileEntityCombMachine();
+        return new TileEntityCoalHeater();
     }
 
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
@@ -210,7 +219,7 @@ public class CombMachine extends BlockContainer
 
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityCombMachine)par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
+            ((TileEntityCoalHeater)par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
         }
     }
 
@@ -218,7 +227,7 @@ public class CombMachine extends BlockContainer
     {
         if (!keepCombMachineInventory)
         {
-        	TileEntityCombMachine tileentitycombmachine = (TileEntityCombMachine)par1World.getBlockTileEntity(par2, par3, par4);
+        	TileEntityCoalHeater tileentitycombmachine = (TileEntityCoalHeater)par1World.getBlockTileEntity(par2, par3, par4);
 
             if (tileentitycombmachine != null)
             {
@@ -228,13 +237,13 @@ public class CombMachine extends BlockContainer
 
                     if (itemstack != null)
                     {
-                        float f = this.combmachineRand.nextFloat() * 0.8F + 0.1F;
-                        float f1 = this.combmachineRand.nextFloat() * 0.8F + 0.1F;
-                        float f2 = this.combmachineRand.nextFloat() * 0.8F + 0.1F;
+                        float f = this.coalheaterRand.nextFloat() * 0.8F + 0.1F;
+                        float f1 = this.coalheaterRand.nextFloat() * 0.8F + 0.1F;
+                        float f2 = this.coalheaterRand.nextFloat() * 0.8F + 0.1F;
 
                         while (itemstack.stackSize > 0)
                         {
-                            int k1 = this.combmachineRand.nextInt(21) + 10;
+                            int k1 = this.coalheaterRand.nextInt(21) + 10;
 
                             if (k1 > itemstack.stackSize)
                             {
@@ -250,9 +259,9 @@ public class CombMachine extends BlockContainer
                             }
 
                             float f3 = 0.05F;
-                            entityitem.motionX = (double)((float)this.combmachineRand.nextGaussian() * f3);
-                            entityitem.motionY = (double)((float)this.combmachineRand.nextGaussian() * f3 + 0.2F);
-                            entityitem.motionZ = (double)((float)this.combmachineRand.nextGaussian() * f3);
+                            entityitem.motionX = (double)((float)this.coalheaterRand.nextGaussian() * f3);
+                            entityitem.motionY = (double)((float)this.coalheaterRand.nextGaussian() * f3 + 0.2F);
+                            entityitem.motionZ = (double)((float)this.coalheaterRand.nextGaussian() * f3);
                             par1World.spawnEntityInWorld(entityitem);
                         }
                     }
@@ -278,8 +287,6 @@ public class CombMachine extends BlockContainer
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return InitBlocks.CombineHeaterOff.blockID;
+        return InitBlocks.CoalHeaterOff.blockID;
     }
 }
-
-

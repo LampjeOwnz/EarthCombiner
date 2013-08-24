@@ -1,4 +1,4 @@
-package Earth.Combiner.MachineUtilety;
+package Earth.Combiner.Utilety.MachineUtilety;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

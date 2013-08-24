@@ -1,4 +1,4 @@
-package Earth.Combiner.MachineUtilety;
+package Earth.Combiner.Utilety.MachineUtilety;
 
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.lib.Strings;
@@ -57,6 +57,7 @@ public class GuiCombMachine extends GuiContainer
 
         i1 = this.commachineInventory.getCombDurProgressScaled(24);
         this.drawTexturedModalRect(k + 70, l + 34, 176, 14, i1 + 1, 16);
+        
     }
 }
 

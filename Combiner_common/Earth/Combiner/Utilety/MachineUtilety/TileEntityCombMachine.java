@@ -1,4 +1,4 @@
-package Earth.Combiner.MachineUtilety;
+package Earth.Combiner.Utilety.MachineUtilety;
 
 import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Blocks.CombMachine;
@@ -140,7 +140,7 @@ public class TileEntityCombMachine extends TileEntity implements ISidedInventory
         this.combmachineCombTime = par1NBTTagCompound.getShort("CombTime");
         this.combmachineCombDCurTime = par1NBTTagCompound.getShort("CombDurTime");
         this.currentItemCombTime = getItemCombTime(this.combmachineItemStacks[Ints.FUELSLOT]);
-        //this.ReduceTime = getItemReduceTime(this.combmachineItemStacks[4]);
+        //this.ReduceTime = getItemReduceTime(this.combmachineItemStacks[Ints.UPGRADESLOT]);
 
         if (par1NBTTagCompound.hasKey("Combiner Machine"))
         {

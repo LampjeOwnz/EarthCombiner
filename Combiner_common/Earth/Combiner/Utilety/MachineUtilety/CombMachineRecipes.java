@@ -1,4 +1,4 @@
-package Earth.Combiner.MachineUtilety;
+package Earth.Combiner.Utilety.MachineUtilety;
 
 import java.util.Arrays;
 import java.util.HashMap;

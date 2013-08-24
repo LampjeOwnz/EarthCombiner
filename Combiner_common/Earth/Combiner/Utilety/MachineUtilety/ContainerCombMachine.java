@@ -1,4 +1,4 @@
-package Earth.Combiner.MachineUtilety;
+package Earth.Combiner.Utilety.MachineUtilety;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -1,12 +1,17 @@
 package Earth.Combiner;
 
+import java.io.File;
+
 import Earth.Combiner.Blocks.InitBlocks;
+import Earth.Combiner.Configuration.ConfigurationHandler;
 import Earth.Combiner.ItemTools.InitItemTools;
 import Earth.Combiner.core.proxy.CommonProxy;
+import Earth.Combiner.lib.Ints;
 import Earth.Combiner.lib.Mechanics;
 import Earth.Combiner.lib.NewMaterials;
 import Earth.Combiner.lib.References;
 import Earth.Combiner.core.handlers.PacketHandler;
+//import Earth.Combiner.core.packets.EarthpacketsHandler;
 import Earth.Combiner.Recipes.BlockRecipes;
 import Earth.Combiner.Recipes.ItemToolRecipes;
 import Earth.Combiner.Tabs.InitTabs;
@@ -29,7 +34,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 @NetworkMod(
 	clientSideRequired	= true, 
 	serverSideRequired	= false, 
-	channels 			= "CombinerCore", 
+	channels 			= {References.CHANNEL}, 
 	packetHandler 		= PacketHandler.class
 )
 
@@ -51,6 +56,8 @@ public class CombinerCore {
 
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
+        	ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath()+ File.separator + References.MODID + File.separator + References.MODID + ".cfg"));
+        	
         	Mechanics.init();
         	
         	InitTabs.init();
@@ -64,6 +71,8 @@ public class CombinerCore {
         	InitBlocks.init();
         	
         	BlockRecipes.init();
+        	
+        	//ConfigurationHander.init(event.getSuggestedConfigurationFile());
         	
         }
         

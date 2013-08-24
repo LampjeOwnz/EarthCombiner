@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 public class InitItemTools {
 
 	// Items
-    public final static Item RoundStone = new CombinerItem(Ints.ROUNDSTONE_ID).setUnlocalizedName("RoundStone");
+    public final static Item RoundStone =  new CombinerItem(Ints.ROUNDSTONE_ID).setUnlocalizedName("RoundStone");
     public final static Item CombinerStone = new CombinerItem(Ints.COMBSTONE_ID).setUnlocalizedName("CombinerStone");
     public final static Item CombinerIron = new CombinerItem(Ints.COMBIRON_ID).setUnlocalizedName("CombinerIron");
     public final static Item CombinerGold = new CombinerItem(Ints.COMBGOLD_ID).setUnlocalizedName("CombinerGold");

@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class Strings {
 	
 	// Needed for the textures
-    public static final String modID = "combinercore";
+    public static final String modID = "combinercore"; 
 	
 	// Item Strings
 	public static final String ROUNDSTONE_NAME = "Stone Round";
@@ -28,6 +28,8 @@ public class Strings {
 	// Block Strings
 	public static final String COMB_MACHINEON_NAME = "CombMachine";
 	public static final String COMB_MACHINEOFF_NAME = "CombinerMachine";
+	public static final String COAL_HEATERON_NAME = "CoalHeat";
+	public static final String COAL_HEATEROFF_NAME = "CoalHeater";
 	public static final String STONEGLASS_NAME = "Stone Glass";
 	public static final String STONEPLANK_NAME = "Stone Plank";
 	
@@ -36,5 +38,6 @@ public class Strings {
 	
 	// Gui final location
 	public static final ResourceLocation GUI_COMBHEATER = new ResourceLocation(modID, GUI_LOCATION + "combheater.png");
+	public static final ResourceLocation GUI_COALHEATER = new ResourceLocation(modID, GUI_LOCATION + "coalheater.png");
 
 }
