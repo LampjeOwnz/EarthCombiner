@@ -33,7 +33,7 @@ public class CombMachineRecipes
     /** De recipes natuurlijk. */
     private CombMachineRecipes()
     {
-    	// One Slot recipes
+    	// One Slot vannila recipes
     	this.addCombiningOneSlot(new ItemStack(Block.oreIron), new ItemStack(Item.ingotIron), 0.7F);
     	this.addCombiningOneSlot(new ItemStack(Block.oreGold), new ItemStack(Item.ingotGold), 1.0F);
         this.addCombiningOneSlot(new ItemStack(Block.oreDiamond), new ItemStack(Item.diamond), 1.0F);
@@ -44,7 +44,7 @@ public class CombMachineRecipes
         this.addCombiningOneSlot(new ItemStack(Item.fishRaw), new ItemStack(Item.fishCooked), 0.35F);
         this.addCombiningOneSlot(new ItemStack(Block.cobblestone), new ItemStack(Block.stone), 0.1F);
         this.addCombiningOneSlot(new ItemStack(Item.clay), new ItemStack(Item.brick), 0.3F);
-        this.addCombiningOneSlot(new ItemStack(Block.blockClay), new ItemStack(Block.field_111032_cD), 0.35F);
+        this.addCombiningOneSlot(new ItemStack(Block.blockClay), new ItemStack(Block.hardenedClay), 0.35F);
         this.addCombiningOneSlot(new ItemStack(Block.cactus), new ItemStack(Item.dyePowder, 1, 2), 0.2F);
         this.addCombiningOneSlot(new ItemStack(Block.wood), new ItemStack(Item.coal, 1, 1), 0.15F);
         this.addCombiningOneSlot(new ItemStack(Block.oreEmerald), new ItemStack(Item.emerald), 1.0F);
@@ -55,7 +55,29 @@ public class CombMachineRecipes
         this.addCombiningOneSlot(new ItemStack(Block.oreLapis), new ItemStack(Item.dyePowder, 1, 4), 0.2F);
         this.addCombiningOneSlot(new ItemStack(Block.oreNetherQuartz), new ItemStack(Item.netherQuartz), 0.2F);
     	
-    	// Two Slot recipes
+        // Two Slot vanilla recipes
+        this.addCombiningTwoSlots(new ItemStack(Block.oreIron), new ItemStack(Block.oreIron), new ItemStack(Item.ingotIron,2), 1.4F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreGold), new ItemStack(Block.oreGold), new ItemStack(Item.ingotGold,2), 2.0F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreDiamond), new ItemStack(Block.oreDiamond), new ItemStack(Item.diamond,2), 2.0F);
+        this.addCombiningTwoSlots(new ItemStack(Block.sand), new ItemStack(Block.sand), new ItemStack(Block.glass,2), 0.2F);
+        this.addCombiningTwoSlots(new ItemStack(Item.porkRaw), new ItemStack(Item.porkRaw), new ItemStack(Item.porkCooked,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Item.beefRaw), new ItemStack(Item.beefRaw), new ItemStack(Item.beefCooked,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Item.chickenRaw), new ItemStack(Item.chickenRaw), new ItemStack(Item.chickenCooked,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Item.fishRaw), new ItemStack(Item.fishRaw), new ItemStack(Item.fishCooked,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Block.cobblestone), new ItemStack(Block.cobblestone), new ItemStack(Block.stone,2), 0.2F);
+        this.addCombiningTwoSlots(new ItemStack(Item.clay), new ItemStack(Item.clay), new ItemStack(Item.brick,2), 0.6F);
+        this.addCombiningTwoSlots(new ItemStack(Block.blockClay), new ItemStack(Block.blockClay), new ItemStack(Block.hardenedClay,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Block.cactus), new ItemStack(Block.cactus), new ItemStack(Item.dyePowder, 4, 2), 0.4F);
+        this.addCombiningTwoSlots(new ItemStack(Block.wood), new ItemStack(Block.wood), new ItemStack(Item.coal, 2, 1), 0.3F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreEmerald), new ItemStack(Block.oreEmerald), new ItemStack(Item.emerald,2), 2.0F);
+        this.addCombiningTwoSlots(new ItemStack(Item.potato), new ItemStack(Item.potato), new ItemStack(Item.bakedPotato,2), 0.7F);
+        this.addCombiningTwoSlots(new ItemStack(Block.netherrack), new ItemStack(Block.netherrack), new ItemStack(Item.netherrackBrick,2), 0.2F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreCoal), new ItemStack(Block.oreCoal), new ItemStack(Item.coal,2), 0.3F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreRedstone), new ItemStack(Block.oreRedstone), new ItemStack(Item.redstone,2), 1.4F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreLapis), new ItemStack(Block.oreLapis), new ItemStack(Item.dyePowder, 2, 4), 0.4F);
+        this.addCombiningTwoSlots(new ItemStack(Block.oreNetherQuartz), new ItemStack(Block.oreNetherQuartz), new ItemStack(Item.netherQuartz, 2, 4), 0.4F);
+        
+    	// Two Slot comb mod recipes
     	this.addCombiningTwoSlots(new ItemStack(Block.planks), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompWoodScrap,1), 0.7F);
     	this.addCombiningTwoSlots(new ItemStack(Item.coal), new ItemStack(Block.cobblestone), new ItemStack(InitItemTools.CompCoalScrap,1), 0.7F);
     	this.addCombiningTwoSlots(new ItemStack(Block.glass), new ItemStack(Block.cobblestone), new ItemStack(InitBlocks.StoneGlass,1), 0.7F);

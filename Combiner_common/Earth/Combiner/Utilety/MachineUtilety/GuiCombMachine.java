@@ -28,9 +28,9 @@ public class GuiCombMachine extends GuiContainer
      */
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
-        String s = this.commachineInventory.isInvNameLocalized() ? this.commachineInventory.getInvName() : I18n.func_135053_a(this.commachineInventory.getInvName());
+        String s = this.commachineInventory.isInvNameLocalized() ? this.commachineInventory.getInvName() : I18n.getString(this.commachineInventory.getInvName());
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-        this.fontRenderer.drawString(I18n.func_135053_a("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(I18n.getString("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**
@@ -39,7 +39,7 @@ public class GuiCombMachine extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_110577_a(Strings.GUI_COMBHEATER);
+        mc.renderEngine.bindTexture(Strings.GUI_COMBHEATER);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);

@@ -23,6 +23,7 @@ public class ItemToolRecipes {
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(Block.torchWood,8), new Object[] {
    	 		"xs ", " b ", 'x', Block.planks, 's', Block.wood, 'b', InitItemTools.CombinerStone});
+   	 	
    	 	GameRegistry.addRecipe(new ItemStack(InitItemTools.WoodScrap,4), new Object[] {
 	 		"s  ", "b  ", 's', Block.wood, 'b', InitItemTools.CombinerStone});
    	 	

@@ -1,6 +1,6 @@
 package Earth.Combiner.Utilety.CoalHeaterUtilety;
 
-import Earth.Combiner.CombinerCore;
+//import Earth.Combiner.CombinerCore;
 import Earth.Combiner.Blocks.CoalHeater;
 import Earth.Combiner.ItemTools.InitItemTools;
 import Earth.Combiner.core.packets.Waterpacket;
@@ -295,7 +295,16 @@ public class TileEntityCoalHeater extends TileEntity implements ISidedInventory
             		}              
             	}
             }
-            if (flag != this.BurnTime > 0 && hasWater())
+            if (flag != this.BurnTime > 0)
+            {
+                flag1 = true;                
+            }
+            else
+            {
+            	flag1 = false;
+            }
+            
+            if (flag != hasWater())
             {
                 flag1 = true;                
             }
@@ -414,7 +423,7 @@ public class TileEntityCoalHeater extends TileEntity implements ISidedInventory
                     return 300;
                 }
 
-                if (block == Block.field_111034_cE)
+                if (block == Block.coalBlock)
                 {
                     return 16000;
                 }
