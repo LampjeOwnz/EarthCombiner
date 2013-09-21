@@ -1,0 +1,20 @@
+[
+{
+  "modid": "Earth",
+  "name": "Combinerp",
+  "description": "Trying a jar,",
+  "version": "0.0.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Earth"
+  ],
+  "credits": "By Earth",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
